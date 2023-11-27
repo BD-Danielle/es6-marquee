@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/ziwei_into_v2.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <script src="./webpack/es6.accordion.bundle.js"></script>
+  <title>js.marquee</title>
+</head>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+    const marqueeInstance = new Marquee('#marquee-vertical', {
+      direction: 'vertical',
+      itemSelector: 'li',
+      delay: 1000,
+      speed: 1,
+      timing: 1,
+      mouse: true,
+    });
+  });
+</script>
+
+<body class="PC">
+  <div id="norm_case">
+    <div class="norm_title bar1">網友真摯推薦</div>
+    <div class="norm_content">
+      <div class="BOX_INSET">
+        <style>
+          .BOX_INSET {
+            overflow: hidden;
+          }
+
+          /* marquee */
+          .MOBILE .list-wrapper .list-aggregate span,
+          .PC .list-wrapper .list-aggregate span {
+            float: left;
+          }
+
+          .MOBILE .list-wrapper .list-aggregate span.city,
+          .PC .list-wrapper .list-aggregate span.city {
+            text-align: right;
+            width: 50%;
+            color: #999;
+            font-size: 1.1rem;
+          }
+
+          .MOBILE .list-wrapper .list-aggregate p.feedback,
+          .PC .list-wrapper .list-aggregate p.feedback {
+            clear: both;
+            margin-top: 25px;
+            font-size: 1.1rem;
+            /* font-weight: bold; */
+          }
+
+          .MOBILE .list-wrapper .list-aggregate span.prefix,
+          .PC .list-wrapper .list-aggregate span.prefix {
+            text-align: left;
+            width: 50%;
+            color: #468502;
+            font-size: 1.1rem;
+            /* font-weight: bold; */
+          }
+
+          .MOBILE .list-wrapper .list-aggregate li,
+          .PC .list-wrapper .list-aggregate li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            height: auto;
+            overflow: hidden;
+          }
+
+          .MOBILE .list-wrapper,
+          .PC .list-wrapper {
+            width: 100%;
+            height: 261px;
+          }
+
+          .MOBILE .list-wrapper {
+            margin: unset;
+          }
+
+          .marqueecontrol {
+            margin: 0 auto !important;
+            padding: 0% !important;
+          }
+        </style>
+        <div class="T_CON marqueecontrol">
+          <div style="height: 260px">
+            <div class="list-wrapper" style="position: relative; overflow: hidden;">
+              <ul class="list-aggregate" id="marquee-vertical"
+                style="position: absolute; top: -652px; left: 0px; padding-left: 0px; margin-top: 0px; height: 653px;">
+                <li>
+                  <span class="prefix">黃先生</span><span class="city">桃園</span>
+                  <p class="feedback">
+                    不知道生辰八字的我，對於線上算命總覺得是農場文章，大家算出的結果應該都差不多，能講的大概就那樣。然而，科技紫微提供的合盤服務，完完全全講到我的心坎！無論最終結果好壞，我會學習好好理解對方，讓這段感情沒有遺憾。
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">徐小姐</span><span class="city">台北</span>
+                  <p class="feedback">
+                    合盤分析的非常詳細！我想要知道的事情都有談到~雖然命定指數不高…但沒有誰天生就是天作之合！！想要幸福，終究還是得要回歸自己，這個服務很貼心的是，就算兩人不適合，也會有其他戀情建議，而且給予的解析與建議真的都非常受用！
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">陳小姐</span><span class="city">基隆</span>
+                  <p class="feedback">
+                    因為曾經受過傷，對於這段感情還是有很多不安，但算完這個單元後，大大提升我的信心。不僅分析兩人先天的關係與影響，也讓我了解他目前的狀態想法，還有兩人未來的相處建議。我會按照結果分析，繼續努力解決我們之間的問題。
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">許先生</span><span class="city">台中</span>
+                  <p class="feedback">
+                    戀愛應該是要開心快樂的，但是我卻總是讓自己次次陷入苦戀。因為個性比較內斂，我一直不敢主動，謝謝這個單元，在我迷茫的時候給我指引與建議，讓我知道該如何行動。
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">呂小姐</span><span class="city">新北市</span>
+                  <p class="feedback">
+                    雖然對這段感情付出許多，但我很開心、很甘願。我以為只要這樣付出就會一直幸福，但…連我自己也迷惘了…。真的很想知道這段情是否會有好結果，還好有姓名合盤，不用輸入生辰的算命方式，讓我能在茫茫情海中找到浮木…
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">黃先生</span><span class="city">桃園</span>
+                  <p class="feedback">
+                    不知道生辰八字的我，對於線上算命總覺得是農場文章，大家算出的結果應該都差不多，能講的大概就那樣。然而，科技紫微提供的合盤服務，完完全全講到我的心坎！無論最終結果好壞，我會學習好好理解對方，讓這段感情沒有遺憾。
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">徐小姐</span><span class="city">台北</span>
+                  <p class="feedback">
+                    合盤分析的非常詳細！我想要知道的事情都有談到~雖然命定指數不高…但沒有誰天生就是天作之合！！想要幸福，終究還是得要回歸自己，這個服務很貼心的是，就算兩人不適合，也會有其他戀情建議，而且給予的解析與建議真的都非常受用！
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">陳小姐</span><span class="city">基隆</span>
+                  <p class="feedback">
+                    因為曾經受過傷，對於這段感情還是有很多不安，但算完這個單元後，大大提升我的信心。不僅分析兩人先天的關係與影響，也讓我了解他目前的狀態想法，還有兩人未來的相處建議。我會按照結果分析，繼續努力解決我們之間的問題。
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">許先生</span><span class="city">台中</span>
+                  <p class="feedback">
+                    戀愛應該是要開心快樂的，但是我卻總是讓自己次次陷入苦戀。因為個性比較內斂，我一直不敢主動，謝謝這個單元，在我迷茫的時候給我指引與建議，讓我知道該如何行動。
+                  </p>
+                </li>
+                <li>
+                  <span class="prefix">呂小姐</span><span class="city">新北市</span>
+                  <p class="feedback">
+                    雖然對這段感情付出許多，但我很開心、很甘願。我以為只要這樣付出就會一直幸福，但…連我自己也迷惘了…。真的很想知道這段情是否會有好結果，還好有姓名合盤，不用輸入生辰的算命方式，讓我能在茫茫情海中找到浮木…
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

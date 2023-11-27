@@ -1,0 +1,25 @@
+{
+  "name": "marquee",
+  "version": "1.0.0",
+  "description": "web marquee",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "CYL",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.22.5",
+    "@webpack-cli/generators": "^3.0.7",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "keywords": [
+    "es6",
+    "class",
+    "marquee"
+  ]
+}

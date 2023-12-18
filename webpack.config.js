@@ -5,7 +5,7 @@ module.exports = {
   entry: './es6.marquee.js',
   output: {
     path: path.resolve(__dirname, './webpack'),
-    filename: 'es6.accordion.bundle.js'
+    filename: 'es6.marquee.bundle.js'
   },
   module: {
     rules: [

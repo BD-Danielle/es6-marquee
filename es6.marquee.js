@@ -11,7 +11,7 @@ class Marquee {
       delay: options.delay || 3000,
       speed: options.speed || 1,
       timing: options.timing || 1,
-      mouse: options.mouse || true,
+      mouse: options.mouse || true
     };
 
     this.next = 0;
@@ -68,18 +68,29 @@ class Marquee {
 
   animate(target) {
     const mark = this.isHorizontal() ? 'left' : 'top';
-    const present = parseInt(this.element.style[mark]);
-
+    const present = parseInt(this.element.style[mark], 10);
+  
     if (present > target) {
-      if (present - this.settings.speed <= target) this.element.style[mark] = target + 'px';
-      else this.element.style[mark] = (present - this.settings.speed) + 'px';
+      if (present - this.settings.speed <= target) {
+        this.element.style[mark] = target + 'px';
+      } else {
+        this.element.style[mark] = (present - this.settings.speed) + 'px';
+      }
     } else {
       this.clearInterval();
-      this.next = (this.next + 1) % this.items.length;
+  
+      // Check if we need to reset to the first item
+      if (this.next >= this.items.length - 1) {
+        this.element.style[mark] = '0px'; // Reset the position
+        this.next = 0; // Reset the counter
+      } else {
+        this.next++;
+      }
+  
       this.timer();
     }
   }
-
+  
   isHorizontal() {
     return this.settings.direction === 'horizontal';
   }

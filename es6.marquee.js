@@ -99,15 +99,27 @@ class Marquee {
     this.items.forEach(item => this.element.appendChild(item.cloneNode(true)));
   }
 
+  // addHoverEvent() {
+  //   ['mouseenter', 'mouseleave'].forEach(event => this.wrapper.addEventListener(event, () => this[event === 'mouseenter' ? 'clearInterval' : 'play']()));
+  // }
   addHoverEvent() {
-    ['mouseenter', 'mouseleave'].forEach(event => this.wrapper.addEventListener(event, () => this[event === 'mouseenter' ? 'clearInterval' : 'play']()));
+    this.wrapper.addEventListener('mouseenter', () => {
+      this.clearInterval(); // 暫停動畫
+      this.clearTimeout();  // 取消任何待執行的跑馬燈開始
+    });
+  
+    this.wrapper.addEventListener('mouseleave', () => {
+      if (this.next < this.items.length) {
+        this.play(); // 從當前位置恢復動畫
+      }
+    });
   }
-
   clearTimeout() {
     clearTimeout(this.timeoutHandle);
   }
 
   clearInterval() {
+    console.log('this.next: ', this.next);
     clearInterval(this.intervalHandle);
   }
 }

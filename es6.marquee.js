@@ -1,8 +1,13 @@
 class Marquee {
-  constructor(element, options) {
-    this.element = document.querySelector(element);
-    this.wrapper = this.element.parentElement;
-    this.items = this.element.querySelectorAll(options.itemSelector);
+  constructor(root, element, options) {
+    this.root = root || document.body;
+    this.element = this.root.querySelector(element);
+
+    if (this.element) {
+      this.wrapper = this.element.parentElement;
+    } else {
+      console.error('Element not found for selector:', element);
+    }
 
     this.settings = {
       enable: true,
@@ -15,10 +20,17 @@ class Marquee {
     };
 
     this.next = 0;
-    this.timeoutHandle;
-    this.intervalHandle;
+    this.timeoutHandle = null;
+    this.intervalHandle = null;
 
     if (!this.settings.enable) return;
+
+    this.items = this.element.querySelectorAll(this.settings.itemSelector); // Initialize this.items
+
+    if (this.items.length === 0) {
+      console.error('No items found for selector:', this.settings.itemSelector);
+      return;
+    }
 
     this.init();
   }
@@ -61,7 +73,9 @@ class Marquee {
     this.clearTimeout();
     let target = 0;
 
-    for (let i = 0; i <= this.next; i++) target -= this.isHorizontal() ? this.items[i].offsetWidth : this.items[i].offsetHeight;
+    for (let i = 0; i <= this.next; i++) {
+      target -= this.isHorizontal() ? this.items[i].offsetWidth : this.items[i].offsetHeight;
+    }
 
     this.intervalHandle = setInterval(() => this.animate(target), this.settings.timing);
   }
@@ -69,28 +83,29 @@ class Marquee {
   animate(target) {
     const mark = this.isHorizontal() ? 'left' : 'top';
     const present = parseInt(this.element.style[mark], 10);
-  
+
     if (present > target) {
       if (present - this.settings.speed <= target) {
         this.element.style[mark] = target + 'px';
+        this.clearInterval();
+
+        if (this.next >= this.items.length - 1) {
+          this.element.style[mark] = '0px'; // Reset the position
+          this.next = 0; // Reset the counter
+        } else {
+          this.next++;
+        }
+
+        this.timer();
       } else {
         this.element.style[mark] = (present - this.settings.speed) + 'px';
       }
     } else {
       this.clearInterval();
-  
-      // Check if we need to reset to the first item
-      if (this.next >= this.items.length - 1) {
-        this.element.style[mark] = '0px'; // Reset the position
-        this.next = 0; // Reset the counter
-      } else {
-        this.next++;
-      }
-  
       this.timer();
     }
   }
-  
+
   isHorizontal() {
     return this.settings.direction === 'horizontal';
   }
@@ -99,38 +114,26 @@ class Marquee {
     this.items.forEach(item => this.element.appendChild(item.cloneNode(true)));
   }
 
-  // addHoverEvent() {
-  //   ['mouseenter', 'mouseleave'].forEach(event => this.wrapper.addEventListener(event, () => this[event === 'mouseenter' ? 'clearInterval' : 'play']()));
-  // }
   addHoverEvent() {
     this.wrapper.addEventListener('mouseenter', () => {
       this.clearInterval(); // 暫停動畫
       this.clearTimeout();  // 取消任何待執行的跑馬燈開始
     });
-  
+
     this.wrapper.addEventListener('mouseleave', () => {
       if (this.next < this.items.length) {
         this.play(); // 從當前位置恢復動畫
       }
     });
   }
+
   clearTimeout() {
     clearTimeout(this.timeoutHandle);
   }
 
   clearInterval() {
-    console.log('this.next: ', this.next);
     clearInterval(this.intervalHandle);
   }
 }
-window.Marquee = Marquee;
 
-// 使用示例
-// const marqueeInstance = new Marquee('#yourMarqueeElement', {
-//   direction: 'horizontal',
-//   itemSelector: 'li',
-//   delay: 3000,
-//   speed: 1,
-//   timing: 1,
-//   mouse: true,
-// });
+window.Marquee = Marquee;
